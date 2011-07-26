@@ -5,7 +5,7 @@ from should_dsl import should
 from apps.control.models import Expense
 
 
-class ControlTestCase(TestCase):
+class ControlModelsTestCase(TestCase):
 
     def setUp(self):
         self.expense = Expense(value=20.0, category='food', date='01/01/2011')
@@ -14,3 +14,6 @@ class ControlTestCase(TestCase):
         self.expense.value |should| equal_to(20.0)
         self.expense.category |should| equal_to('food')
         self.expense.date |should| equal_to('01/01/2011')
+
+    def tearDown(self):
+        Expense.objects.all().delete()

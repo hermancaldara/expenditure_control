@@ -4,7 +4,7 @@ PIP = pip
 all: test
 
 test: deps
-	@$(PYTHON) src/manage.py test
+	@$(PYTHON) src/manage.py test --nocapture
 
 deps: django django-nose should_dsl 
 
@@ -15,4 +15,4 @@ django-nose:
 	@$(PYTHON) -c 'import nose' 2>/dev/null || $(PIP) install django-nose
 
 should_dsl:
-	@$(PYTHON) -c 'import should_dsl' 2>/dev/nulll || $(PIP) install should_dsl
+	@$(PYTHON) -c 'import should_dsl' 2>/dev/null || $(PIP) install should_dsl
