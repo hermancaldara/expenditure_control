@@ -14,6 +14,10 @@ class ControlFormTestCase(TestCase):
     def test_it_has_a_form(self):
         self.form.instance |should| be_instance_of(Expense)
 
+    def test_it_has_value_and_category_and_description_and_date(self):
+        self.form.fields.keys() |should| equal_to(['value', 'category', 'description', 'date'])
+        self.form.fields.keys() |should| have(4).fields
+
     def test_it_can_save_an_expense(self):
          self.form = ExpenseForm({'value': 1, 'category': 'food', 'description': 'Rice', 'date': '01/01/2011'})
          self.form.save()
