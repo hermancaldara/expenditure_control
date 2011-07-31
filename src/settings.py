@@ -149,5 +149,10 @@ LOGGING = {
 }
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-#NOSE_ARGS = ['--pdb']
+NOSE_ARGS = ['--with-coverage',
+             '--nocapture',
+             '--detailed-errors',
+             '--cover-erase',
+             '--nologcapture',
+            ]
+NOSE_ARGS.extend(['--cover-package=control'])
