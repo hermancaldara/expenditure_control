@@ -16,5 +16,8 @@ class ControlModelsTestCase(TestCase):
         self.expense.description |should| equal_to('Rice')
         self.expense.date |should| equal_to('01/01/2011')
 
+    def test_it_has_unicode_method(self):
+        self.expense.__unicode__() |should| equal_to('food - Rice - 01/01/2011: 20.0')
+
     def tearDown(self):
         Expense.objects.all().delete()
