@@ -1,0 +1,12 @@
+<html>
+<body>
+{% if message %}
+  <h1>Expense saved with success!</h1>
+{% endif %}
+<form method="POST" action="/">
+  {% csrf_token %}
+  {{ form }}
+  <input id="submit" type="submit">
+</form>
+</body>
+</html>

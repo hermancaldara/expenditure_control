@@ -6,7 +6,7 @@ all: test
 test: deps
 	@$(PYTHON) src/manage.py test
 
-deps: django django-nose should_dsl coverage
+deps: django django-nose should_dsl coverage splinter
 
 django:
 	@$(PYTHON) -c 'import django' 2>/dev/null || $(PIP) install django
@@ -19,3 +19,6 @@ should_dsl:
 
 coverage:
 	@$(PYTHON) -c 'import coverage' 2>/dev/null || $(PIP) install coverage
+
+splinter:
+	@$(PYTHON) -c 'import splinter' 2>/dev/null || $(PIP) install splinter

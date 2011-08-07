@@ -27,3 +27,8 @@ class ControlViewsTestCase(TestCase):
         )
         form = response.context.get('form')
         form.errors['value'] |should| equal_to([u'This field is required.'])
+
+    def test_showing_all_expenses(self):
+        response = self.client.get('/expenses/')
+        response.status_code |should| equal_to(200)
+        response.context.has_key('expenses') |should| be(True)
