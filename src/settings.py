@@ -1,7 +1,12 @@
 import os
+import sys
 
 
 PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+
+path = lambda x: os.path.join(PROJECT_ROOT_PATH, x)
+
+sys.path.insert(0, path('apps'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
