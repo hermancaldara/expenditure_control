@@ -14,15 +14,16 @@ class ControlViewsTestCase(TestCase):
         response = self.client.get('/')
         response.status_code |should| equal_to(200)
         response.context.has_key('form') |should| be(True)
+        response.template.name |should| equal_to('indexa.html')
 
     def test_submit_a_expense(self):
-        response = self.client.post('/', 
+        response = self.client.post('/',
             {'value': 10.0, 'category': 'food', 'description': 'Rice', 'date': '01/01/2011'}
         )
-        response.status_code |should| equal_to(302)
+        response.context.has_key('message') |should| be(True)
 
     def test_submit_a_expense_with_error(self):
-        response = self.client.post('/', 
+        response = self.client.post('/',
             {'category': 'food', 'description': 'Rice', 'date': '01/01/2011'}
         )
         form = response.context.get('form')
@@ -32,3 +33,4 @@ class ControlViewsTestCase(TestCase):
         response = self.client.get('/expenses/')
         response.status_code |should| equal_to(200)
         response.context.has_key('expenses') |should| be(True)
+

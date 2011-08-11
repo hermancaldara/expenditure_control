@@ -1,12 +1,21 @@
 <html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('h1').html('Expense saved with success!');
+      $('h1').fadeOut(2000);
+    });
+  </script>
+</head>
 <body>
-{% if message %}
-  <h1>Expense saved with success!</h1>
-{% endif %}
-<form method="POST" action="/">
-  {% csrf_token %}
-  {{ form }}
-  <input id="submit" type="submit">
-</form>
+  {% if message %}
+    <h1></h1>
+  {% endif %}
+  <form method="POST" action="">
+    {% csrf_token %}
+    {{ form }}
+    <input id="submit" type="submit">
+  </form>
 </body>
 </html>

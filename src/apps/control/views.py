@@ -11,20 +11,17 @@ def index(request):
         form = ExpenseForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/expense_saved/')
+            return render_to_response(
+                'index.html',
+                {'message': True, 'form': ExpenseForm()},
+                context_instance=RequestContext(request)
+            )
     else:
         form = ExpenseForm()
 
     return render_to_response(
         'index.html',
         {'form': form},
-        context_instance=RequestContext(request)
-    )
-
-def expense_saved(request):
-    return render_to_response(
-        'index.html',
-        {'message': True, 'form': ExpenseForm()},
         context_instance=RequestContext(request)
     )
 
